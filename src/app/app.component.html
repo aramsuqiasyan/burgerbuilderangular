@@ -1,0 +1,30 @@
+<div class="container pt-2">
+
+    <button class="btn-block btn btn-primary" (click)="onAddLayer()">
+        Add Layer
+    </button>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            Total Price: <span class="badge-dark text-light badge">{{ total }} AMD</span>
+        </div>
+    </div>
+    <hr>
+    <div class="row pt-2">
+        <div class="col-12 ing" [ngClass]="{'preview':isPreview}">
+            <app-ingredient
+                *ngFor="let i of ingredients"
+                [ingredient]="i"
+                (onDelete)="onDelete($event)"
+                (onChange)="onChange($event)"
+            >
+            </app-ingredient>
+        </div>
+    </div>
+    <hr>
+    <div class="row p-5">
+        <div class="col-auto">
+            <button class="btn btn-success btn-block" (click)="isPreview = !isPreview">Preview</button>
+        </div>
+    </div>
+</div>

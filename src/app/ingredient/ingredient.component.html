@@ -1,0 +1,19 @@
+<div class="row align-items-center justify-content-around">
+    <img class="col-4" [src]="'../assets/' + ingredient.img" alt="">
+    <select [disabled]="!ingredient.allowChange" class="col-5 " #select (change)="changeLayer(select.value)">
+        <option
+            *ngFor="let l of layers"
+            value="{{l.type}}"
+            [selected]="l.type === ingredient.type"
+            [hidden]="l.type === 1 || l.type === 7"
+        >
+            {{l.name}}
+        </option>
+    </select>
+    <span class="mx-2 badge-info rounded-pill p-2 badge">{{ingredient.price}}AMD</span>
+    <button
+        [disabled]="!ingredient.allowChange"
+        (click)="deleteIngredient()"
+        class="col-auto ml-2 btn btn-danger">&times;
+    </button>
+</div>
